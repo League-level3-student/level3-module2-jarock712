@@ -17,22 +17,28 @@ public class _02_BinarySearch {
     public static int binarySearch(int[] array, int start, int end, int value) {
         // 2. if end is greater than or equal to start, then
         //    do steps 3 - 6.
-
-            // 3. create an integer called mid and set it equal
+    	if (end >= start) {
+    		// 3. create an integer called mid and set it equal
             //    to the half way point between start and end
-
-            // 4. if the array element at mid is equal to value
+			int center = start + (end - start) / 2;
+			 // 4. if the array element at mid is equal to value
             //    then return mid
-
-            // 5. if the array element at mid is greater than value
+			if (array[center] == value) {
+				return center;
+			}
+			// 5. if the array element at mid is greater than value
             //    then return the value returned from a call to the 
             //    binarySearch method. Pass in start and mid - 1
             //    for the end variable.
-
-            // 6. return the value returned from a call to the binarySearch
+			if (array[center] > value) {
+				return binarySearch(array, start, center - 1, value);
+			}
+			// 6. return the value returned from a call to the binarySearch
             //    method. Use mid + 1 as the start, and pass in end.
-
+    		
+			return binarySearch(array, center - 1, end, value);
+		}
         // 7. return -1 because the value was not found
-        return 0;
+        return -1;
     } 
 }
