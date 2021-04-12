@@ -1,6 +1,12 @@
 package _01_Sorting_Algorithms;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class ThanosSorter extends Sorter {
+	public static void main(String[] args) {
+		int[] arr = {10, 15, 20, 100, 200, 250, 500};
+	}
     public ThanosSorter() {
         type = "Thanos";
     }
@@ -45,6 +51,30 @@ public class ThanosSorter extends Sorter {
      */
     @Override
     void sort(int[] arr, SortingVisualizer display) {
-        
+        int num = 2;
+        int nums= 0;
+        for (int i = 0; i < arr.length; i++) {
+		for (int j = 0; j < arr.length - 1; j++) {
+		if (arr[j] > arr[j + 1]) {
+		if (nums == 0) {
+		for (int k = arr.length - 2; k >= arr.length / num; k--) {
+		arr[j] = 0;
+		display.updateDisplay();
+		}
+		i = 0;
+		nums = 1;
+		num = num * 2;
+		}else if(nums == 1) {
+		for (int k = 1; k < arr.length / num; k++) {
+		arr[j] = 0;
+		display.updateDisplay();
+		}
+		i = 0;
+		nums = 0;
+		num = num * 2;
+		}
+		}
+		}
+		}
     }
 }
